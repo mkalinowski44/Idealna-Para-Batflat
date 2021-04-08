@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="{if: $page.desc}{$page.desc}{else}{$settings.description}{/if}"
+    />
+    <meta name="keywords" content="{$settings.keywords}" />
+    <title>{$page.title} | {$settings.title}</title>
+    <link rel="stylesheet" href="{$bat.theme}/css/main.min.css" />
+    <link rel="stylesheet" href="{$bat.theme}/libs/icofont/icofont.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="preload"
+      as="style" onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+    <link rel="shortcut icon" href="{$bat.theme}/favicon.ico" />
+    <link rel="apple-touch-icon" href="{$bat.theme}/img/icons/apple-icon.png" />
+    <link rel="manifest" href="{$bat.theme}/pwa-manifest.json">
+    <meta name="theme-color" content="#ff5789">
+    <link rel="alternate" type="application/rss+xml" title="Subskrybuj aby być na bieżąco." href="{$bat.path}/blog/feed/pl_polski" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="{$bat.path}/sitemap.xml" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113375474-4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-113375474-4');
+    </script>
+    {loop: $bat.header}{$value}{/loop}
+  </head>
+
+  <body class="{$theme}">
+    <div class="nav-bar">
+      <a href="{$bat.path}" class="nav-logo-container">
+        <img src="{$bat.theme}/img/navlogo.png" width="230" height="43" alt="Idealna para - logo" class="nav-logo" />
+      </a>
+
+      <div class="nav-flex">
+        <div class="navigation">
+          <form action="{?=url()?}" class="search-form" id="search-form">
+            <div class="search-container">
+              <input
+                type="search"
+                class="search-input"
+                id="search-input"
+                name="search"
+                placeholder="{$lang.searchbox.placeholder}"
+              />
+              <div class="search-focus-mark"></div>
+              <button type="submit" class="search-button" id="search-submit" aria-label="Szukaj">
+                <i class="icofont-search md-icofont"></i>
+              </button>
+            </div>
+          </form>
+
+          <nav>
+            <ul class="nav-list">
+              {$navigation.main}
+            </ul>
+          </nav>
+
+          <div class="separator"></div>
+          <button class="nav-button" id="invert-colors" onClick="invertColors()" aria-label="Zmień motyw kolorystyczny" title="Zmień motyw">
+            <span class="label" id="invert-colors-label">{?=($theme == 'light' ? 'Tryb ciemny' : 'Tryb jasny')?}</span>
+            <i class="icofont-{?=($theme == 'light' ? 'night' : 'sun')?} lg-icofont" id="invert-colors-icon"></i>
+          </button>
+          <button class="nav-button" id="show-search" onClick="showSearch()" aria-label="Wyszukiwarka" title="Wyszukiwarka">
+            <i class="icofont-search lg-icofont"></i>
+          </button>
+        </div>
+
+        <button class="nav-button" id="mobile-toggle" onClick="toggleNav()" aria-label="Wyszukiwarka">
+          <span class="animated-icon-menu">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+          </span>
+        </button>
+      </div>
+    </div>

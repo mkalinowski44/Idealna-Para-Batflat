@@ -1,0 +1,5 @@
+{loop: $navigation.list}
+<li class="nav-item">
+    <a class="nav-link {if: $value.active || $value.class}{?= trim($value.active.' '.$value.class) ?}{/if}" href="{$value.url}" >{$value.name}</a>
+</li>
+{/loop}

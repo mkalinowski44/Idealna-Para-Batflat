@@ -1,0 +1,248 @@
+.article-format {
+  margin-bottom: -1px;
+  line-height: 1.5em;
+  max-width: 760px;
+  padding: $mdSpace $xsSpace 1px;
+
+  @include screen('sm', 'md') {
+    padding: $mdSpace $mdSpace 1px;
+  }
+
+  @include screen('lg', 'xxl') {
+    padding: $mdSpace $lgSpace 1px;
+  }
+
+  p {
+    margin-bottom: $mdSpace;
+    margin-top: 0;
+
+    @include screen('sm', 'xxl') {
+      text-align: justify;
+    }
+  }
+
+  a {
+    @include focusBorder();
+    color: $accentColor;
+    padding: $xsSpace 0;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: $mdSpace;
+    text-align: left;
+  }
+
+  h1 {
+    font-size: $xlFont;
+    font-weight: $regularFont;
+  }
+
+  h2 {
+    font-size: $lgFont;
+    font-weight: $boldFont;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    font-size: $lgFont;
+    font-weight: $regularFont;
+    text-transform: uppercase;
+    color: $accentColor;
+  }
+
+  h4 {
+    font-size: $lgFont;
+    font-weight: $regularFont;
+  }
+
+  h5 {
+    font-size: $smFont;
+    font-weight: $boldFont;
+    text-transform: uppercase;
+  }
+
+  h6 {
+    font-size: $smFont;
+    font-weight: $regularFont;
+    text-transform: uppercase;
+    color: $accentColor;
+  }
+
+  blockquote {
+    margin: 0;
+    text-align: left;
+    padding: $xsSpace;
+    font-size: $smFont;
+    line-height: 1.5em;
+    position: relative;
+    z-index: 1;
+    border-top-right-radius: $smRadius;
+    border-bottom-right-radius: $smRadius;
+    margin-bottom: $mdSpace;
+    font-style: italic;
+
+    @include screen('sm', 'xxl') {
+      padding: $mdSpace;
+    }
+
+    &::before {
+      content: "\efce";
+      @include iconBefore();
+      position: absolute;
+      top: 2px;
+      left: 4px;
+      font-size: 64px;
+      z-index: -1;
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  ul, ol {
+    margin-top: 0;
+    margin-bottom: $mdSpace;
+    padding-left: 34px;
+    font-size: $smFont;
+    text-align: left;
+
+    @include screen('sm', 'xxl') {
+      padding-left: 46px;
+    }
+
+    ul, ol {
+      margin-bottom: 0;
+    }
+
+    li {
+      margin-bottom: $xsSpace;
+    }
+  }
+
+  ul {
+    list-style-type: disc;
+
+    li::marker {
+      color: $accentColor;
+      font-size: 2.1rem;
+      line-height: 0.5em;
+    }
+
+    ul {
+      list-style-type: circle;
+
+      ul {
+        list-style-type: disc;
+
+        li::marker {
+          font-size: 1em;
+        }
+      }
+    }
+  }
+
+  ol {
+    list-style-type: decimal;
+
+    li::marker {
+      color: $accentColor;
+      font-weight: $boldFont;
+    }
+
+    ol {
+      list-style-type: lower-latin;
+
+      ol {
+        list-style-type: upper-roman;
+      }
+    }
+  }
+
+  img, iframe {
+    display: block;
+    width: 100%;
+    border-radius: $smRadius;
+    margin-bottom: $mdSpace;
+  }
+
+  .table-scroll {
+    overflow-x: auto;
+    margin-bottom: $mdSpace;
+
+    table {
+      margin-bottom: 0;
+    }
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: $smFont;
+    margin-bottom: $mdSpace;
+
+    th {
+      border-bottom: 2px solid $accentColor;
+      text-align: left;
+      font-weight: $boldFont;
+      text-transform: uppercase;
+      padding: $xsSpace;
+
+      @include screen('sm', 'xxl') {
+        padding: $xsSpace $mdSpace;
+      }
+    }
+
+    td {
+      padding: $xsSpace;
+
+      @include screen('sm', 'xxl') {
+        padding: $xsSpace $mdSpace;
+      }
+    }
+
+    tbody tr {
+      position: relative;
+      z-index: 1;
+
+      &:hover {
+        color: $accentColor;
+      }
+
+      &:last-child td {
+        border-bottom: none;
+      }
+    }
+  }
+
+  pre {
+    display: block;
+    font-size: $smFont;
+    padding: $xsSpace;
+    border-radius: $smRadius;
+    margin-top: 0;
+    margin-bottom: $mdSpace;
+    line-height: 1.35em;
+    overflow-x: auto;
+
+    @include screen('sm', 'xxl') {
+      padding: $mdSpace;
+    }
+  }
+
+  hr {
+    margin-top: 0;
+    margin-bottom: $mdSpace;
+    display: block;
+    height: 2px;
+    background: $accentColor;
+    border: none;
+    border-radius: 1px;
+    width: 150px;
+  }
+}

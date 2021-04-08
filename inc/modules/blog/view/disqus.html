@@ -1,0 +1,29 @@
+{if: !empty($settings.blog.disqus)}
+    {if: isset($isPost) && $post.comments == 1 && $post.status == 2}
+<script>
+/*
+	disqusLoader.js v1.0
+	A JavaScript plugin for lazy-loading Disqus comments widget.
+	-
+	By Osvaldas Valutis, www.osvaldas.info
+	Available for use under the MIT License
+*/
+
+!function(t,e,n){"use strict";var o=function(t,e){var n,o;return function(){var r=this,i=arguments,d=+new Date;n&&d<n+t?(clearTimeout(o),o=setTimeout(function(){n=d,e.apply(r,i)},t)):(n=d,e.apply(r,i))}},r=!1,i=!1,d=!1,s=!1,a="unloaded",u=!1,l=function(){if(!u||!e.body.contains(u)||"loaded"==u.disqusLoaderStatus)return!0;var n,o,r=t.pageYOffset;if((n=u,o=n.getBoundingClientRect(),{top:o.top+e.body.scrollTop,left:o.left+e.body.scrollLeft}).top-r>t.innerHeight*i)return!0;var l,c,f,p=e.getElementById("disqus_thread");p&&p.removeAttribute("id"),u.setAttribute("id","disqus_thread"),u.disqusLoaderStatus="loaded","loaded"==a?DISQUS.reset({reload:!0,config:d}):(t.disqus_config=d,"unloaded"==a&&(a="loading",l=s,c=function(){a="loaded"},(f=e.createElement("script")).src=l,f.async=!0,f.setAttribute("data-timestamp",+new Date),f.addEventListener("load",function(){"function"==typeof c&&c()}),(e.head||e.body).appendChild(f)))};t.addEventListener("scroll",o(r,l)),t.addEventListener("resize",o(r,l)),t.disqusLoader=function(t,n){n=function(t,e){var n,o={};for(n in t)Object.prototype.hasOwnProperty.call(t,n)&&(o[n]=t[n]);for(n in e)Object.prototype.hasOwnProperty.call(e,n)&&(o[n]=e[n]);return o}({laziness:1,throttle:250,scriptUrl:!1,disqusConfig:!1},n),i=n.laziness+1,r=n.throttle,d=n.disqusConfig,s=!1===s?n.scriptUrl:s,(u="string"==typeof t?e.querySelector(t):"number"==typeof t.length?t[0]:t)&&(u.disqusLoaderStatus="unloaded"),l()}}(window,document);
+
+
+disqusLoader('#disqus_thread', {
+    scriptUrl: 'https://{$settings.blog.disqus}.disqus.com/embed.js',
+    disqusConfig: function () {
+    this.page.title = '{$post.title}'
+    this.page.url = '{$post.url}'
+    this.page.identifier = '{$post.disqus_identifier}'
+    },
+    laziness: 0,
+});
+</script>
+    {/if}
+    {if: isset($isBlog)}
+    <script id="dsq-count-scr" src="//{$settings.blog.disqus}.disqus.com/count.js" async></script>
+    {/if}
+{/if}

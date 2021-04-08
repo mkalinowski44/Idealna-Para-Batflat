@@ -1,0 +1,29 @@
+.page-header {
+  height: 400px;
+  position: relative;
+  margin-bottom: -100px;
+
+  .header-image {
+    @include fillAbsolute();
+    object-fit: cover;
+  }
+
+  .container {
+    position: relative;
+    padding-top: 104px;
+    padding-bottom: 124px;
+    z-index: 1;
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+      font-weight: $regularFont;
+      font-size: $lgFont;
+      padding: $xsSpace $mdSpace;
+      border-radius: $lgRadius;
+      text-align: center;
+    }
+  }
+}

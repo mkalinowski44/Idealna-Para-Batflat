@@ -1,0 +1,79 @@
+// Universal colors
+$accentColor: hsl(342, 100%, 67%);
+$mkColor: hsl(360, 100%, 68%);
+$vmColor: hsl(194, 100%, 68%);
+$bodyShadowMask: hsla(0, 0%, 0%, 40%);
+
+// Light theme
+$fontLight: hsl(0, 0%, 37%);
+$placeholderLight: hsl(0, 0%, 77%);
+$gray100Light: hsl(0, 0%, 95%);
+$gray200Light: hsl(0, 0%, 90%);
+$gray300Light: hsl(0, 0%, 73%);
+$bgNavLight: hsla(0, 0%, 100%, 80%);
+$bgLight: hsl(0, 0%, 100%);
+$bgTransparentLight: hsla(0, 0%, 100%, 90%);
+$bodyLight: hsl(302, 12%, 95%);
+$bgHoverLight: hsla(0, 0%, 0%, 6%);
+
+// Dark theme
+$fontDark: hsl(0, 0%, 84%);
+$placeholderDark: hsl(0, 0%, 43%);
+$gray100Dark: hsl(0, 0%, 15%);
+$gray200Dark: hsl(0, 0%, 19%);
+$gray300Dark: hsl(0, 0%, 35%);
+$bgNavDark: hsla(0, 0%, 20%, 80%);
+$bgDark: hsl(0, 0%, 20%);
+$bgTransparentDark: hsla(0, 0%, 20%, 90%);
+$bodyDark: hsl(302, 4%, 16%);
+$bgHoverDark: hsla(0, 0%, 100%, 7%);
+
+// Shadows
+$areaShadowLight: 0px 10px 30px -10px hsla(0, 0%, 0%, 15%);
+$areaShadowDark: 0px 10px 30px -10px hsla(0, 0%, 0%, 50%);
+$navShadowLight: 0px 5px 30px -10px hsla(0, 0%, 0%, 15%);
+$navShadowDark: 0px 5px 30px -10px hsla(0, 0%, 0%, 50%);
+$textShadowLight: 0px 10px 30px hsla(0, 0%, 0%, 15%);
+$textShadowDark: 0px 15px 30px hsla(0, 0%, 0%, 50%);
+
+// Spaces
+$xsSpace: 12px;
+$smSpace: 15px;
+$mdSpace: 24px;
+$lgSpace: 40px;
+$xlSpace: 60px;
+
+// Radius
+$smRadius: 10px;
+$lgRadius: 20px;
+
+// Font sizes
+$xsFont: 1.6rem;
+$smFont: 1.8rem;
+$mdFont: 2.1rem;
+$lgFont: 2.4rem;
+$xlFont: 3.6rem;
+$xxlFont: 4.8rem;
+$regularFont: 400;
+$boldFont: 700;
+
+// Icon sizes
+$smIcon: 16px;
+$mdIcon: 24px;
+$lgIcon: 32px;
+
+// Font family
+$baseFontFamily: 'Montserrat', sans-serif;
+
+// transitions
+$quickTransition: .2s ease-out;
+$smoothTransition: .4s ease-out;
+$longTransition: 4s ease-out;
+
+// Responsive breakpoints
+$__breakpoint_xs: 0px;       // 0px - 479px
+$__breakpoint_sm: 480px;     // 480px - 767px
+$__breakpoint_md: 768px;     // 768px - 1023px
+$__breakpoint_lg: 1024px;    // 1024pz - 1199px
+$__breakpoint_xl: 1200px;    // 1200px - 1499px
+$__breakpoint_xxl: 1500px;   // 1500px ^

@@ -1,0 +1,13 @@
+{
+  "host": "srv28842.microhost.com.pl",
+  "username": "srv28842",
+  "password": "GlTD0QmgYSzl",
+  "remotePath": "/domains/marcin-kalinowski.pl/public_html/blog",
+  "protocol": "ftp",
+  "port": 21,
+  "fileNameEncoding": "utf8",
+  "autoUpload": false,
+  "autoDelete": false,
+  "autoDownload": false,
+  "ignore": [".git", "/.vscode"]
+}

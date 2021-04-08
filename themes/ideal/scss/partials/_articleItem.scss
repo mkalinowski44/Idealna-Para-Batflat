@@ -1,0 +1,225 @@
+.article-item {
+  overflow: hidden;
+  margin-bottom: $lgSpace;
+
+  .article-item-link {
+    position: relative;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    outline: none;
+
+    &:focus {
+      box-shadow: 0 0 0 1px $accentColor;
+    }
+  }
+
+
+  .article-item-thumbnail {
+    display: block;
+    height: 140px;
+    position: relative;
+    z-index: 0;
+    margin: 0;
+    overflow: hidden;
+
+    .article-item-image {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      will-change: transform;
+      transition: transform $longTransition;
+    }
+  }
+
+  &:hover .article-item-image {
+    transform: scale(1.05);
+  }
+
+  .article-item-time {
+    width: 110px;
+    height: 110px;
+    position: absolute;
+    right: $smSpace;
+    top: $smSpace;
+    z-index: 1;
+    border-radius: $smRadius;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    span:nth-child(1) {
+      font-size: $xxlFont;
+      line-height: $xxlFont;
+      font-weight: $boldFont;
+    }
+
+    span:nth-child(2) {
+      font-size: $xsFont;
+      line-height: $xsFont;
+      margin-top: 3px;
+      margin-bottom: 4px;
+    }
+
+    span:nth-child(3) {
+      font-weight: $boldFont;
+    }
+  }
+
+  .article-header-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    font-weight: $regularFont;
+    font-size: $mdFont;
+    margin: 0;
+    padding: $smSpace $xsSpace;
+    @include focusBorder();
+
+    @include screen('sm', 'xxl') {
+      padding: $smSpace $mdSpace;
+    }
+
+    h2 {
+      font-size: inherit;
+      margin: 0;
+      display: inline;
+      padding: 0;
+      font-weight: inherit;
+    }
+  }
+
+  .article-item-body {
+    font-size: $smFont;
+    line-height: 1.5em;
+    margin: 0;
+    padding: 0 $xsSpace $smSpace;
+
+    @include screen('sm', 'xxl') {
+      padding: 0 $mdSpace $smSpace;
+    }
+  }
+
+  .article-item-footer {
+    display: grid;
+    grid-template-areas:
+                      "tags tags"
+                      "sepa sepa"
+                      "auth more";
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: 56px 1fr;
+
+    @include screen('sm', 'md') {
+      grid-template-columns: 80px 1fr;
+    }
+
+    @include screen("lg", "xxl") {
+      grid-template-areas:
+                      "sepa sepa sepa"
+                      "auth tags more";
+      grid-template-columns: 64px 1fr auto;
+    }
+
+    .separator {
+      grid-area: sepa;
+      width: 100%;
+    }
+
+    .article-item-details {
+      width: 100%;
+      margin-top: -4px;
+      grid-area: tags;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 0 $xsSpace 11px;
+
+      @include screen('sm', 'md') {
+        padding: 0 $mdSpace 11px $mdSpace;
+      }
+
+      @include screen("lg", "xxl") {
+        padding: 11px 0;
+        margin-top: 0;
+      }
+    }
+
+    .article-item-author-link {
+      display: flex;
+      text-decoration: none;
+      height: 54px;
+      width: 100%;
+      border-bottom-left-radius: $lgRadius;
+      @include focusBorder();
+      justify-content: center;
+      align-items: center;
+
+      &:hover {
+        opacity: 0.7;
+      }
+
+      @include screen('lg', 'xxl') {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        justify-self: end;
+        margin-right: 6px;
+      }
+    }
+
+    .article-item-author {
+      grid-area: auth;
+      display: block;
+      font-size: 14px;
+      font-weight: $boldFont;
+      line-height: 32px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      text-align: center;
+      text-decoration: none;
+
+      &.vm {
+        background: $vmColor;
+      }
+
+      &.mk {
+        background: $mkColor;
+      }
+    }
+
+    .link {
+      flex-shrink: 0;
+      margin: 4px 8px 4px 0px;
+      height: 24px;
+    }
+
+    .article-item-more {
+      width: 100%;
+      grid-area: more;
+      color: inherit;
+      text-decoration: none;
+      font-size: $xsFont;
+      line-height: $mdIcon;
+      padding: $smSpace $mdSpace;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      border-bottom-right-radius: $lgRadius;
+      margin-left: auto;
+      align-self: stretch;
+      @include focusBorder();
+      @include hoverBefore() {
+        border-bottom-right-radius: $lgRadius;
+      }
+    }
+
+    .article-item-comments::before {
+      content: "\eff2";
+      @include iconBefore();
+      margin-right: 6px;
+    }
+  }
+}

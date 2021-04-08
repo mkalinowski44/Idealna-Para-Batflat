@@ -1,0 +1,297 @@
+body.expand-nav {
+  @include screen('xs', 'md') {
+    .nav-bar {
+      transform: translateX(calc(-100% + 80px));
+    }
+
+    .animated-icon-menu .line {
+      &:nth-child(1) {
+        transform: rotate(45deg) translateY(-50%);
+      }
+      &:nth-child(2) {
+        transform: translateY(-50%) scaleX(0);
+      }
+      &:nth-child(3) {
+        transform: rotate(-45deg) translateY(-50%);
+      }
+    }
+
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  will-change: transform;
+  transition: transform $smoothTransition;
+  z-index: 10;
+}
+
+.nav-logo-container {
+  flex-shrink: 1;
+  padding: 0 $mdSpace;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  @include focusBorder();
+  @include hoverBefore();
+
+  .nav-logo {
+    display: block;
+    width: 100%;
+    max-width: 230px;
+    position: relative;
+    top: 5px;
+    object-fit: contain;
+  }
+}
+
+.nav-flex {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.navigation {
+  position: absolute;
+  left: 100%;
+  width: calc(100% - 80px);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+
+  @include screen('lg', 'xxl') {
+    flex-direction: row;
+    position: static;
+    width: auto;
+    height: auto;
+    background: transparent;
+
+    .separator {
+      display: none;
+    }
+  }
+}
+
+#show-search {
+  display: none;
+
+  @include screen('lg', 'xxl') {
+    display: flex;
+  }
+}
+
+.search-form {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 0 $xsSpace;
+
+  @include screen('sm', 'md') {
+    padding: 0 $mdSpace;
+  }
+
+  @include screen('lg', 'xxl') {
+    padding: 0 $lgSpace;
+  }
+
+  @include screen('lg', 'xxl') {
+    position: fixed;
+    left: 50%;
+    top: 150px;
+    transform: translate(-50%, -50px);
+    opacity: 0;
+    pointer-events: none;
+    width: 100%;
+    max-width: #{760 + 300 + 80 + 40}px;
+    transition: opacity $quickTransition, transform $quickTransition;
+
+    &.show {
+      transform: translate(-50%, 0px);
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  .search-container {
+    height: 54px;
+    width: 100%;
+    border-radius: $smRadius;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+
+    .search-input {
+      height: 54px;
+      font-family: inherit;
+      background: transparent;
+      border: none;
+      font-size: $smFont;
+      padding: 0 $mdSpace;
+      width: 100%;
+      flex-shrink: 1;
+      color: inherit;
+      outline: none;
+    }
+
+    .search-focus-mark {
+      @include fillAbsolute();
+      pointer-events: none;
+      border-radius: $smRadius;
+      border: 1px solid $accentColor;
+      opacity: 0;
+      will-change: transform;
+      transition: opacity $quickTransition;
+    }
+
+    .search-input:focus ~ .search-focus-mark {
+      opacity: 1;
+    }
+
+    .search-button {
+      width: 54px;
+      height: 54px;
+      flex-shrink: 0;
+      border-top-right-radius: $smRadius;
+      border-bottom-right-radius: $smRadius;
+      border: none;
+      background: transparent;
+      color: inherit;
+      padding: 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @include focusBorder();
+      @include hoverBefore();
+    }
+  }
+}
+
+.nav-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+
+  @include screen('lg', 'xxl') {
+    flex-direction: row;
+  }
+
+  .nav-item {
+    display: block;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+
+    .nav-link {
+      display: block;
+      color: inherit;
+      text-decoration: none;
+      padding: $mdSpace;
+      height: 80px;
+      line-height: 32px;
+      @include focusBorder();
+      @include hoverBefore();
+
+      &.active::after {
+        content: '';
+        display: block;
+        height: 100%;
+        width: 10px;
+        background: $accentColor;
+        border-radius: 5px;
+        position: absolute;
+        bottom: 0px;
+        left: -5px;
+        z-index: 2;
+
+        @include screen('lg', 'xxl') {
+          left: 0;
+          bottom: -5px;
+          width: 100%;
+          height: 10px;
+        }
+      }
+    }
+  }
+}
+
+
+.nav-button {
+  height: 80px;
+  flex-shrink: 0;
+  color: inherit;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $mdSpace;
+  font-family: inherit;
+  font-size: $mdFont;
+  @include focusBorder();
+  @include hoverBefore();
+
+  .label {
+    line-height: 32px;
+
+    @include screen('lg', 'xxl') {
+      display: none;
+    }
+  }
+
+  .icofont-search {
+    width: 32px;
+    font-size: 28px;
+  }
+}
+
+.animated-icon-menu {
+  display: inline-block;
+  width: $lgIcon;
+  height: $lgIcon;
+  position: relative;
+
+  .line {
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: $lgIcon;
+    border-radius: 1px;
+    top: 50%;
+    will-change: transform;
+    transition: transform $quickTransition;
+
+    &:nth-child(1) {
+      transform: rotate(0deg) translateY(-550%);
+    }
+    &:nth-child(2) {
+      transform: translateY(-50%) scaleX(1);
+    }
+    &:nth-child(3) {
+      transform: rotate(0deg) translateY(450%);
+    }
+  }
+}
+
+#mobile-toggle {
+  @include screen('lg', 'xxl') {
+    display: none;
+  }
+}

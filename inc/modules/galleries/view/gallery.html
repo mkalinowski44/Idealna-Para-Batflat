@@ -1,0 +1,7 @@
+<div class="gallery">
+    {loop: $gallery.items}
+    <a data-fslightbox="{$gallery.slug}" href="{?=url($value.src.lg)?}" class="gallery-link">
+        <img src="{?=url($value.src.sm)?}" alt="{if: $value.title}{$value.title}{/if}" class="gallery-image" />
+    </a>
+    {/loop}
+</div>

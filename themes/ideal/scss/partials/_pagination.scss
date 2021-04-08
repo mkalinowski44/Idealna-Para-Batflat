@@ -1,0 +1,39 @@
+.pagination {
+  margin: 0;
+  padding: 0;
+  margin-bottom: $lgSpace;
+  list-style: none;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(54px, 1fr));
+
+  .pagination-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 54px;
+    @include focusBorder();
+    @include hoverBefore();
+
+    &:not(.active) {
+      border-radius: $lgRadius;
+    }
+  }
+
+  .pagination-item {
+    display: block;
+  }
+
+  .pagination-link.active {
+    background: $accentColor;
+    pointer-events: none;
+  }
+
+  .pagination-link.disable {
+    pointer-events: none;
+    user-select: none;
+  }
+}

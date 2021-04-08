@@ -1,0 +1,49 @@
+.gallery {
+  display: grid;
+  grid-gap: $xsSpace;
+  grid-template-columns: repeat(auto-fill, minmax(200px, auto));
+  margin-bottom: $mdSpace;
+
+  .gallery-link {
+    display: block;
+    position: relative;
+    padding-top: 100%;
+    border-radius: $smRadius;
+    overflow: hidden;
+    color: inherit;
+
+    .gallery-image {
+      @include fillAbsolute();
+      object-fit: cover;
+      will-change: transform;
+      transition: transform $longTransition, opacity $quickTransition;
+    }
+
+    &::before {
+      content: "\ed1b";
+      @include iconBefore();
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-size: $lgIcon;
+      z-index: 1;
+      transform: translate(-50%, -50%);
+      will-change: transform;
+      opacity: 0;
+      transition: opacity $quickTransition;
+    }
+
+    &:hover, &:focus {
+      opacity: 1;
+
+      .gallery-image {
+        transform: scale(1.1);
+        opacity: 0.5;
+      }
+
+      &::before {
+        opacity: 1;
+      }
+    }
+  }
+}

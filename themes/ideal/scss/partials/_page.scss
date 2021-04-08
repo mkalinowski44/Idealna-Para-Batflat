@@ -1,0 +1,83 @@
+.page {
+  margin-bottom: $lgSpace;
+
+  .article-format {
+    margin: 0 auto;
+    margin-bottom: -1px;
+
+    padding: $lgSpace $xsSpace 1px;
+
+    @include screen('sm', 'md') {
+      padding: $lgSpace $mdSpace 1px;
+    }
+
+    @include screen('lg', 'xxl') {
+      padding: $lgSpace $lgSpace 1px;
+    }
+
+    img {
+      margin: 0 auto;
+      width: auto;
+      max-width: 100%;
+    }
+
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    hr,
+    blockquote,
+    img,
+    ol,
+    ul,
+    table,
+    .table-scroll,
+    pre,
+    .gallery {
+      margin-bottom: $lgSpace;
+    }
+
+    .table-scroll table {
+      margin-bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6, p {
+      text-align: center;
+    }
+
+    .profiles {
+      margin-top: -$mdSpace;
+      margin-bottom: calc(#{$lgSpace} - #{$mdSpace});
+    }
+
+    .profile-card {
+      padding: $mdSpace 0;
+
+      img {
+        margin: 0;
+      }
+
+      p, h1 {
+        text-align: inherit;
+      }
+    }
+
+    .social-nav {
+      padding: 0;
+      margin-bottom: $lgSpace;
+
+      a:hover {
+        opacity: 1;
+      }
+    }
+
+    ol, ul {
+      ol, ul {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

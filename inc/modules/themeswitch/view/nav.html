@@ -1,0 +1,9 @@
+<ul class="social-nav">
+{loop: $items}
+<li class="social-item">
+   <a href="{$value.url}" class="social-link" target="_blank" rel="noopener noreferrer" title="{$value.name}">
+      <i class="icofont-{$value.class} lg-icofont"></i>
+   </a>
+</li>
+{/loop}
+</ul>

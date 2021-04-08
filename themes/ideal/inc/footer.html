@@ -1,0 +1,13 @@
+
+    <footer class="main-footer">
+      <div class="container">
+        {$settings.footer}
+        {$bat.powered}.
+      </div>
+    </footer>
+
+    <script src="{$bat.theme}/js/main.js"></script>
+    <script src="{$bat.theme}/libs/fslightbox/fslightbox.js" async></script>
+    {loop: $bat.footer}{$value}{/loop}
+  </body>
+</html>

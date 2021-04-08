@@ -1,0 +1,95 @@
+{template: inc/header.html}
+
+<header class="page-header">
+  <picture>
+    <source media="(max-width: 1023px)" srcset="{if: $post.cover_mobile_url !== NULL}{$post.cover_mobile_url}{else}{if: $post.cover_url !== NULL}{$post.cover_url}{else}{$bat.theme}/img/voidimage-mobile.jpg{/if}{/if}">
+    <source media="(min-width: 1024px)" srcset="{if: $post.cover_url !== NULL}{$post.cover_url}{else}{$bat.theme}/img/voidimage.jpg{/if}">
+    <img src="{if: $post.cover_url !== NULL}{$post.cover_url}{else}{$bat.theme}/img/voidimage.jpg{/if}" alt="{$page.title}" class="header-image">
+  </picture>
+</header>
+
+<div class="container main-wrapper">
+  <div class="main-content">
+    {if: $post.status != 2}
+    <div class="article comments panel">
+      <div class="info">
+        {if: $post.status == 0}
+          To jest <span>szkic</span> posta i jest widoczny tylko dla zalogowanych użytkowników.
+        {else}
+          Ten post jest jeszcze <span>nieopublikowany</span> i jest widoczny tylko dla tych, którzy mają do niego link.
+        {/if}
+      </div>
+    </div>
+    {/if}
+
+    <article class="article panel">
+      <header>
+        <div class="article-details">
+          <time datetime="{$post.datetime}" class="article-time">{$post.published_at}</time>
+          {loop: $post.tags}
+          <a href="{$value.url}" class="badge link">#{$value.name}</a>
+          {/loop}
+        </div>
+        <h1 class="article-title">{$post.title}</h1>
+      </header>
+      <div class="separator"></div>
+      <div class="article-format">
+        {$post.content}
+      </div>
+      <div class="separator"></div>
+      <div class="profile-card {?=($post.author.id == 1 ? 'mk' : 'vm')?}">
+        <img src="{?= $post.author.avatar ?}" class="avatar" alt="profile" />
+        <div class="content">
+          <h1 class="profile-name">{$post.author.name}</h1>
+          <p class="profile-description">
+            {$post.author.description}
+          </p>
+        </div>
+      </div>
+      <div class="separator"></div>
+      <div class="comments">
+        {if: $post.comments}
+        {if: $post.status != 2}
+        <div class="info">Komentarze zostaną włączone po opublikowaniu wpisu.</div>
+        {else}
+        <div id="disqus_thread"></div>
+        {/if}
+        {else}
+        <section class="article-share">
+          <h1>Udostępnij:</h1>
+          <ul class="social-nav">
+            <li class="social-item">
+              <a
+                href="https://www.facebook.com/sharer.php?u={?= urlencode($post.url) ?}"
+                class="social-link"
+                aria-label="facebook"
+                title="Facebook"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <i class="icofont-facebook lg-icofont"></i>
+              </a>
+            </li>
+            <li class="social-item">
+              <a
+                href="http://twitter.com/home?status={?= urlencode($post.url) ?}"
+                class="social-link"
+                aria-label="twitter"
+                title="Twitter"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <i class="icofont-twitter lg-icofont"></i>
+              </a>
+            </li>
+          </ul>
+        </section>
+        <div class="info">Wyłączono możliwość komentowania</div>
+        {/if}
+      </div>
+    </article>
+  </div>
+  {template: inc/sidebar.html}
+</div>
+
+{template: inc/footer.html}

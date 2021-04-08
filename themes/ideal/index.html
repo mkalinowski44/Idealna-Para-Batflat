@@ -1,0 +1,25 @@
+{template: inc/header.html}
+
+<header class="page-header">
+  <picture>
+    <source media="(max-width: 1023px)" srcset="{$bat.theme}/img/backgrounds/about-mobile.jpg">
+    <source media="(min-width: 1024px)" srcset="{$bat.theme}/img/backgrounds/about.jpg">
+    <img src="{$bat.theme}/img/backgrounds/about.jpg" alt="{$page.title}" class="header-image">
+  </picture>
+</header>
+
+<div class="container main-wrapper">
+  <div class="main-content page">
+    <article class="page panel">
+      <div class="article-format">
+        <header>
+          <h1>{$page.title}</h1>
+        </header>
+        <hr />
+        {$page.content}
+      </div>
+    </article>
+  </div>
+</div>
+
+{template: inc/footer.html}

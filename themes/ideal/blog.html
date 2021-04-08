@@ -1,0 +1,93 @@
+{template: inc/header.html}
+
+<header class="page-header">
+  {if: $blog.header !== NULL}
+  <div class="container">
+    <h1>{$blog.header}</h1>
+  </div>
+  {/if}
+  <picture>
+    <source media="(max-width: 1023px)" srcset="{$bat.theme}/img/backgrounds/blog-mobile.jpg">
+    <source media="(min-width: 1024px)" srcset="{$bat.theme}/img/backgrounds/blog.jpg">
+    <img src="{$bat.theme}/img/backgrounds/blog.jpg" alt="{$blog.title}" class="header-image">
+  </picture>
+</header>
+
+<div class="container main-wrapper">
+  <div class="main-content">
+    {if: $blog.posts != []}
+    {loop: $blog.posts}
+    <article class="article-item panel">
+      <header>
+        <a href="{$value.url}" class="article-item-link">
+          <figure class="article-item-thumbnail">
+            <img
+              src="{if: $value.cover_url !== NULL}{$value.cover_url}{else}{$bat.theme}/img/noimage.jpg{/if}" alt="{$value.title}" class="article-item-image" />
+          </figure>
+          <time datetime="{$value.published_at.time}" class="article-item-time">
+            <span> {$value.published_at.day} </span>
+            <span> {$value.published_at.month} </span>
+            <span> {$value.published_at.year} </span>
+          </time>
+        </a>
+        <a href="{$value.url}" class="article-header-link">
+          <h2>{$value.title}</h2>
+        </a>
+        </header>
+        <p class="article-item-body">
+          {$value.content}
+        </p>
+      <footer class="article-item-footer">
+        <div class="separator"></div>
+        <a href="{?=url(['blog', 'autor', $value.author.id])?}" class="article-item-author-link" title="{$value.author.fullname}" aria-label="{$value.author.fullname}">
+          <span class="article-item-author {?=($value.author.id == 1 ? 'mk' : 'vm')?}">{?=($value.author.id == 1 ? 'MK' : 'VM')?}</span>
+        </a>
+        <div class="article-item-details">
+          {loop: $value.tags as $tag}
+          <a href="{$tag.url}" class="badge link">#{$tag.name}</a>
+          {/loop}
+          {if: $value.comments}
+          <a href="{$value.url}#disqus_thread" class="badge link article-item-comments" data-disqus-identifier="{$value.disqus_identifier}" title="Przejdź do komentarzy" aria-label="Przejdź do komentarzy">0</a>
+          {/if}
+        </div>
+        <a href="{$value.url}" class="article-item-more">
+          Czytaj dalej <i class="icofont-dotted-right md-icofont"></i>
+        </a>
+      </footer>
+    </article>
+    {/loop}
+    {else}
+    <div class="article panel">
+      <h1 class="article-title">Nic do wyświetlenia</h1>
+      <div class="separator"></div>
+      <div class="comments">
+        <div class="info">Niestety, nie znaleziono żadnych wpisów pasujących do podanych kryteriów wyszukiwania.</div>
+      </div>
+    </div>
+    {/if}
+    {if: $pagination.count > 1}
+    <ul class="pagination panel">
+      <li class="pagination-item">
+        <{if: $pagination.prev != NULL}a href="{$pagination.prev}" aria-label="Poprzednia strona"{else}div{/if} class="pagination-link {if: $pagination.prev == NULL}disable{/if}">
+          <i class="icofont-dotted-left md-icofont"></i>
+        </{if: $pagination.prev != NULL}a{else}div{/if}>
+      </li>
+      {loop: $pagination.pages}
+      <li class="pagination-item">
+        <{if: $value.title != $pagination.current}a href="{$value.url}"{else}div{/if} class="pagination-link{if: $value.title == $pagination.current} active{/if}">
+          {$value.title}
+        </{if: $value.title != $pagination.current}a{else}div{/if}>
+      </li>
+      {/loop}
+      <li class="pagination-item">
+        <{if: $pagination.next != NULL}a href="{$pagination.next}" aria-label="Następna strona"{else}div{/if} class="pagination-link {if: $pagination.next == NULL}disable{/if}">
+          <i class="icofont-dotted-right md-icofont"></i>
+        </{if: $pagination.next != NULL}a{else}div{/if}>
+      </li>
+    </ul>
+    {/if}
+  </div>
+  {template: inc/sidebar.html}
+</div>
+
+{template: inc/footer.html}

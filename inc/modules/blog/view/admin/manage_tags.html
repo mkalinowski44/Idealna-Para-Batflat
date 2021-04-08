@@ -1,0 +1,74 @@
+<article class="row">
+  <div class="col-md-8">
+      <div class="panel panel-default">
+          <div class="panel-heading">
+              <h3 class="panel-title">{$lang.general.manage}</h3>
+          </div>
+
+          <div class="panel-body">
+              <form action="{$tags.updateURL}" method="post">
+                  <div class="clearfix">
+                      <h3 class="pull-left" style="margin-top:5px;">{$lang.blog.tags_count} {$tags.tagsCount}</h3>
+                      <button type="submit" style="margin-right:15px;" title="{$lang.general.save}" name="save" class="btn btn-success pull-right"><i class="fa fa-pencil"></i> {$lang.blog.update}</button>
+                  </div>
+                  <div class="table-responsive">
+                      <table class="table table-striped no-margin">
+                          <thead>
+                              <tr>
+                                  <th>{$lang.blog.name}</th>
+                                  <th>{$lang.blog.slug}</th>
+                                  <th>{$lang.blog.connected_posts}</th>
+                                  <th class="text-right">{$lang.general.actions}</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              {if: !empty($tags.items)}
+                              {loop: $tags.items}
+                              <tr>
+                                  <td>
+                                    <input type="text" name="edit-list[{$value.id}]" value="{$value.name}" class="form-control" placeholder="{$value.name}" />
+                                  </td>
+                                  <td>
+                                      <code>
+                                        {$value.slug}
+                                      </code>
+                                  </td>
+                                  <td>
+                                    <b>{$value.count}</b>
+                                  </td>
+                                  <td class="text-right">
+                                    <a href="{$value.delURL}" class="btn btn-xs btn-danger" data-confirm="{$lang.galleries.delete_confirm}">
+                                        <i class="fa fa-trash-o"></i> <span class="hidden-xs">{$lang.general.delete}</span>
+                                    </a>
+                                  </td>
+                              </tr>
+                              {/loop}
+                              {else}
+                              <tr><td colspan="7" class="text-center">{$lang.general.empty_array}</td></tr>
+                              {/if}
+                          </tbody>
+                      </table>
+                  </div>
+              </form>
+              {$tags.pagination}
+          </div>
+      </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+    <h3 class="panel-title">{$lang.blog.add_tag}</h3>
+  </div>
+      <div class="panel-body">
+      <form action="{$tags.addURL}" method="POST">
+            <div class="form-group">
+                <label>{$lang.general.name}</label>
+                <input type="text" name="name" class="form-control" required />
+            </div>
+            <input type="submit" class="btn btn-primary" value="{$lang.general.save}" />
+          </form>
+      </div>
+    </div>
+</div>
+</article>

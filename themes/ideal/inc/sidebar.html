@@ -1,0 +1,55 @@
+<aside class="sidebar panel">
+  <section>
+    <header>
+      <h2>Social media</h2>
+      <div class="separator"></div>
+    </header>
+    {$socialnav}
+  </section>
+  <section>
+    <header>
+      <h2>Autorzy</h2>
+      <div class="separator"></div>
+    </header>
+    <ul class="sidebar-nav users-list">
+      {loop: $users}
+      <li class="sidebar-item">
+        <a href="{?=url(['blog', 'autor', $value.id])?}" class="sidebar-link">
+          <img
+            src="{$value.avatar}"
+            alt="{$value.fullname}"
+            class="user-avatar"
+          />
+          <div class="user-name">{$value.fullname}</div>
+        </a>
+      </li>
+      {/loop}
+    </ul>
+  </section>
+  <section>
+    <header>
+      <h2>Ostatnie wpisy</h2>
+      <div class="separator"></div>
+    </header>
+    <ul class="sidebar-nav">
+      {loop: $latestPosts}
+      <li class="sidebar-item">
+        <a href="{?= url(['blog', 'wpis', $value.slug]) ?}" class="sidebar-link">{$value.title}</a>
+      </li>
+      {/loop}
+    </ul>
+  </section>
+  <section>
+    <header>
+      <h2>Popularne tematy</h2>
+      <div class="separator"></div>
+    </header>
+    <ul class="sidebar-nav">
+      {loop: $allTags}
+      <li class="sidebar-item">
+        <a href="{?=url(['blog','temat', $value.slug]) ?}" class="sidebar-link"><span class="accent-text">#</span>{$value.name}&nbsp;<span class="badge">{$value.count}</span></a>
+      </li>
+      {/loop}
+    </ul>
+  </section>
+</aside>

@@ -1,0 +1,78 @@
+.article {
+  max-width: 760px;
+  margin: 0 auto $lgSpace;
+
+  @include screen('lg', 'lg') {
+    max-width: calc(100vw - 432px);
+  }
+
+  .article-details {
+    display: flex;
+    flex-wrap: wrap;
+    padding: $mdSpace $xsSpace 0px;
+    align-items: center;
+
+    @include screen('sm', 'md') {
+      padding: $mdSpace $mdSpace 0px;
+    }
+
+    @include screen('lg', 'xxl') {
+      padding: $mdSpace $lgSpace 0px;
+    }
+  }
+
+  .article-time {
+    font-size: $xsFont;
+    margin: 4px 0px 4px 0px;
+    width: 100%;
+
+    @include screen('lg', 'xxl') {
+      width: unset;
+      margin: 4px 8px 4px 0px;
+    }
+
+    &:before {
+      content: "\eecd";
+      @include iconBefore();
+      margin-right: 6px;
+      position: relative;
+      top: -1px;
+    }
+  }
+
+  .badge.link {
+    margin: 4px 8px 4px 0px;
+  }
+
+  .article-title {
+    font-size: $xlFont;
+    font-weight: $regularFont;
+    margin: 0;
+    padding: $mdSpace $xsSpace;
+
+    @include screen('sm', 'md') {
+      padding: $mdSpace;
+    }
+
+    @include screen('lg', 'xxl') {
+      padding: $mdSpace $lgSpace;
+    }
+  }
+
+  .article-share {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: $mdSpace;
+
+    h1 {
+      font-weight: $regularFont;
+      font-size: $lgFont;
+      margin: $xsSpace $xsSpace $xsSpace 0;
+    }
+
+    .social-nav {
+      padding: 0;
+    }
+  }
+}

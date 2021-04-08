@@ -1,0 +1,73 @@
+{template: inc/header.html}
+
+<header class="page-header">
+  <picture>
+    <source media="(max-width: 1023px)" srcset="{$bat.theme}/img/backgrounds/subjects-mobile.jpg">
+    <source media="(min-width: 1024px)" srcset="{$bat.theme}/img/backgrounds/subjects.jpg">
+    <img src="{$bat.theme}/img/backgrounds/subjects.jpg" alt="{$page.title}" class="header-image">
+  </picture>
+</header>
+
+<div class="container grid-wrapper">
+  {if: $tematy.items != []}
+  {loop: $tematy.items}
+  <article class="subject-card panel">
+    <header>
+      <a href="{?=url(['blog', 'temat', $value.slug])?}" class="subject-header-link">
+        <figure class="subject-thumbnail">
+          <img src="{if: $value.cover_url !== NULL}{$value.cover_url}{else}{$bat.theme}/img/noimage.jpg{/if}" alt="{$value.name}" class="subject-image" />
+        </figure>
+        <h1 class="subject-title">#{$value.name}</h1>
+      </a>
+    </header>
+    <ul class="subject-list">
+      {loop: $value.posts as $post}
+      <li class="subject-list-item">
+        <a href="{$post.postURL}" class="subject-list-link">
+          <span class="subject-list-label">{$post.title}</span>
+          <i class="icofont-link md-icofont"></i>
+        </a>
+      </li>
+      {/loop}
+      <li class="subject-list-item">
+        <a href="{?=url(['blog', 'temat', $value.slug])?}" class="subject-list-link">
+          <span class="subject-list-label">Wszystkie wpisy</span>
+          <span class="badge">{$value.count}</span>
+        </a>
+      </li>
+    </ul>
+  </article>
+  {/loop}
+  {else}
+  <div class="article panel">
+    <h1 class="article-title">Nic do wyświetlenia</h1>
+    <div class="separator"></div>
+    <div class="comments">
+      <div class="info">Na tej stronie nie ma żadnych tematów do wyświetlenia.</div>
+    </div>
+  </div>
+  {/if}
+  {if: $pagination.count > 1}
+    <ul class="pagination panel">
+      <li class="pagination-item">
+        <{if: $pagination.prev != NULL}a href="{$pagination.prev}" aria-label="Poprzednia strona"{else}div{/if} class="pagination-link {if: $pagination.prev == NULL}disable{/if}">
+          <i class="icofont-dotted-left md-icofont"></i>
+        </{if: $pagination.prev != NULL}a{else}div{/if}>
+      </li>
+      {loop: $pagination.pages}
+      <li class="pagination-item">
+        <{if: $value.title != $pagination.current}a href="{$value.url}"{else}div{/if} class="pagination-link{if: $value.title == $pagination.current} active{/if}">
+          {$value.title}
+        </{if: $value.title != $pagination.current}a{else}div{/if}>
+      </li>
+      {/loop}
+      <li class="pagination-item">
+        <{if: $pagination.next != NULL}a href="{$pagination.next}" aria-label="Następna strona"{else}div{/if} class="pagination-link {if: $pagination.next == NULL}disable{/if}">
+          <i class="icofont-dotted-right md-icofont"></i>
+        </{if: $pagination.next != NULL}a{else}div{/if}>
+      </li>
+    </ul>
+  {/if}
+</div>
+
+{template: inc/footer.html}
